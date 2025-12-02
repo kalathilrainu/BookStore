@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    body {
+        font-family: "Poppins", sans-serif;
+    }
+    .dashboard {
+        text-align: center;
+        margin-top: 60px;
+    }
+    .dashboard h1 {
+        font-size: 2rem;
+        color: #333;
+    }
+    .dashboard p {
+        margin-top: 10px;
+        color: #666;
+    }
+    .actions {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+    .btn {
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 8px;
+        font-weight: bold;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    .btn-books {
+        background: linear-gradient(135deg, #6a11cb, #2575fc);
+    }
+    .btn-books:hover {
+        background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+    .btn-logout {
+        background: #f44336;
+    }
+    .btn-logout:hover {
+        background: #d32f2f;
+    }
+</style>
+
+<div class="dashboard">
+    <h1>👋 Welcome, {{ user.username }}!</h1>
+    <p>You’re logged in successfully. Choose what you’d like to do next.</p>
+
+    <div class="actions">
+        <a href="/bookadmin/books/" class="btn btn-books">📚 View Available Books</a>
+        <a href="/logout/" class="btn btn-logout">🚪 Logout</a>
+    </div>
+</div>
+{% endblock %}

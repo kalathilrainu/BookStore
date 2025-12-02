@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>📚 Books in Category: {{ category.name }}</h2>
+<p><a href="{% url 'category_list' %}">⬅ Back to Categories</a></p>
+<hr>
+
+<div style="display:flex; flex-wrap:wrap; gap:20px; margin-top:20px;">
+  {% for book in books %}
+    <div style="width:220px; border:1px solid #ccc; border-radius:8px; padding:10px;">
+      {% if book.cover %}
+        <img src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:100%; height:auto;">
+      {% endif %}
+      <h3 style="margin-top:10px;">{{ book.title }}</h3>
+      <p><strong>Author:</strong> {{ book.author }}</p>
+      <p><strong>Price:</strong> ₹{{ book.price }}</p>
+      <a href="{% url 'book_detail' book.pk %}">📖 View Details</a>
+    </div>
+  {% empty %}
+    <p>No books in this category yet.</p>
+  {% endfor %}
+</div>
+
+{% endblock %}

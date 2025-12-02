@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>{{ book.title }}</h2>
+{% if book.cover %}
+  <img src="{{ book.cover.url }}" alt="{{ book.title }}" style="width:250px;height:auto;">
+{% endif %}
+<p><strong>Author:</strong> {{ book.author }}</p>
+<p><strong>Category:</strong> {{ book.category }}</p>
+<p><strong>Price:</strong> ₹{{ book.price }}</p>
+<p><strong>Description:</strong> {{ book.description }}</p>
+<p><strong>Added by:</strong> {{ book.created_by }}</p>
+
+<hr>
+<a href="{% url 'edit_book' book.pk %}">✏️ Edit</a> |
+<a href="{% url 'delete_book' book.pk %}">🗑️ Delete</a> |
+<a href="{% url 'book_list' %}">⬅ Back to list</a>
+{% endblock %}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Book Store{% endblock %}</title>
+
+  <!-- Google Fonts & Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f7f8fa;
+    }
+
+    /* ===== Navbar Styling ===== */
+    header {
+      background-color: #01579b;  /* Deep blue like in the screenshot */
+      color: white;
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    header .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    header .brand img {
+      width: 35px;
+      height: 35px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;  /* yellow hover effect */
+    }
+
+    .content {
+      padding: 30px 60px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 10px;
+      color: #888;
+      font-size: 0.9em;
+      border-top: 1px solid #ddd;
+      background: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <img src="https://cdn-icons-png.flaticon.com/512/3176/3176363.png" alt="Logo">
+      <span>മലയാളം Book Store</span>
+    </div>
+
+    <nav>
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'book_list' %}">Books</a>
+      <a href="{% url 'category_list' %}">Categories</a>
+      {% if user.is_authenticated %}
+        <a href="{% url 'dashboard' %}">Dashboard</a>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+      {% endif %}
+    </nav>
+  </header>
+
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    © 2025 Malayalam Book Store | Designed by Admin
+  </footer>
+</body>
+</html>

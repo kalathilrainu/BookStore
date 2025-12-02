@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+  .dashboard-container {
+      text-align: center;
+      margin-top: 50px;
+      font-family: "Poppins", sans-serif;
+  }
+  h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+  }
+  .card-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 40px;
+  }
+  .card {
+      background: #fff;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      width: 280px;
+      padding: 20px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  }
+  .card h2 {
+      color: #333;
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+  }
+  .card p {
+      font-size: 1rem;
+      color: #666;
+  }
+  .btn {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+  }
+  .btn:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+  }
+  footer {
+      margin-top: 60px;
+      color: #999;
+      font-size: 0.9rem;
+  }
+</style>
+
+<div class="dashboard-container">
+  <h1>📊 Welcome to the Admin Dashboard</h1>
+  <p>Manage your books, categories, and users easily.</p>
+
+  <div class="card-grid">
+      <div class="card">
+          <h2>Total Books</h2>
+          <p>{{ total_books }}</p>
+          <a href="{% url 'book_list' %}" class="btn">📚 View Books</a>
+      </div>
+
+      <div class="card">
+          <h2>Total Categories</h2>
+          <p>{{ total_categories }}</p>
+          <a href="{% url 'category_list' %}" class="btn">📂 View Categories</a>
+      </div>
+
+      <div class="card">
+          <h2>Total Users</h2>
+          <p>{{ total_users }}</p>
+          <a href="{% url 'admin_dashboard' %}" class="btn">👥 View Users</a>
+      </div>
+  </div>
+
+  <footer>© 2025 Book Management System | Designed by Admin</footer>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="max-width: 650px; margin: 40px auto; background: #f8faff; border: 1px solid #e0e0e0; border-radius: 12px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); padding: 25px 30px;">
+  
+  <h2 style="text-align:center; color:#007BFF; font-weight:700;">✏ Edit Book Details</h2>
+  <p style="text-align:center; color:#666;">Updating: <strong>{{ book.title }}</strong></p>
+  
+  <form method="post" enctype="multipart/form-data" style="display:flex; flex-direction:column; gap:15px; margin-top:20px;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    
+    <div style="display:flex; justify-content:space-between; margin-top:20px;">
+      <button type="submit" style="
+          background: linear-gradient(to right, #007BFF, #00BCD4);
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+          font-weight: 600;
+          font-size: 1rem;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      ">💾 Save Changes</button>
+
+      <a href="{% url 'book_list' %}" style="
+          background: #ccc;
+          color: #333;
+          padding: 10px 20px;
+          border-radius: 8px;
+          text-decoration: none;
+          font-weight: 500;
+          font-size: 1rem;
+          box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+      ">❌ Cancel</a>
+    </div>
+  </form>
+</div>
+
+{% endblock %}

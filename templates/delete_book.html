@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div style="max-width: 600px; margin: 40px auto; text-align: center; border: 1px solid #ddd; border-radius: 10px; padding: 30px; box-shadow: 2px 2px 6px rgba(0,0,0,0.1);">
+    <h2 style="color: #c0392b;">⚠ Delete Book</h2>
+    <p>Are you sure you want to delete the book:</p>
+    <h3 style="color: #2c3e50;">“{{ book.title }}”</h3>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Category:</strong> {{ book.category }}</p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" style="background-color:#e74c3c; color:white; padding:8px 18px; border:none; border-radius:5px; cursor:pointer;">Yes, Delete</button>
+      <a href="{% url 'book_list' %}" style="margin-left:10px; background:#3498db; color:white; padding:8px 18px; border-radius:5px; text-decoration:none;">Cancel</a>
+    </form>
+  </div>
+{% endblock %}
