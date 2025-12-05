@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -59,7 +61,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR.parent  / "templates"],   # Now Django looks here for project-level templates
+        'DIRS': [
+            BASE_DIR / 'templates',
+        ],  # Now Django looks here for project-level templates
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
