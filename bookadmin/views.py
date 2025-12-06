@@ -202,3 +202,18 @@ def delete_book(request, id):
 
     # Show confirmation page before deletion
     return render(request, 'delete_book.html', {'book': book})
+
+
+# bookadmin/views.py
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
+# ... your existing imports and views ...
+
+
+@login_required
+def user_list(request):
+    """Show all registered users to the admin."""
+    users = User.objects.all().order_by('username')
+    return render(request, 'user_list.html', {'users': users})

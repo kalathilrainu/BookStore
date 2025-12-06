@@ -77,8 +77,14 @@
       <a href="{% url 'home' %}">Home</a>
       <a href="{% url 'book_list' %}">Books</a>
       <a href="{% url 'category_list' %}">Categories</a>
+
       {% if user.is_authenticated %}
-        <a href="{% url 'dashboard' %}">Dashboard</a>
+        {# Admins go to admin_dashboard, normal users to dashboard #}
+        {% if user.is_staff %}
+          <a href="{% url 'admin_dashboard' %}">Dashboard</a>
+        {% else %}
+          <a href="{% url 'dashboard' %}">Dashboard</a>
+        {% endif %}
       {% else %}
         <a href="{% url 'login' %}">Login</a>
       {% endif %}
@@ -90,7 +96,7 @@
   </main>
 
   <footer>
-    © 2025 Malayalam Book Store | Designed by Admin
+    © 2025 Malayalam Book Store | Designed by Joseph Ranu KT
   </footer>
 </body>
 </html>
